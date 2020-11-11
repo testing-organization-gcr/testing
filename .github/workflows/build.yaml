@@ -63,5 +63,5 @@ jobs:
             docker run \
             -d \
             -p 5000:5000 \
-            --name apinew \
+            --name apinewly \
             ghcr.io/testing-organization-gcr/testing/test_api:main
