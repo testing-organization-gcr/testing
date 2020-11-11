@@ -138,3 +138,7 @@ def deletePatient(record):
 def cronJob():
     response = ops_db_update_request()
     return response
+
+@application.route('/hello', methods=['GET'])
+def helloword():
+    return "Hello World", 200

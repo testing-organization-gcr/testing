@@ -46,3 +46,20 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+  ssh_push:
+    needs: ghr_push
+    runs-on: ubuntu-latest
+    if: github.event_name == "push"
+    steps:
+      - name: Deploy to vultr server
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.VULTR_HOST }}
+          USERNAME: ${{ secrets.VULTR_USERNAME }}
+          KEY: ${{ secrets.VULTR_SSH_KEY }}
+          script: |
+            docker pull ghcr.io/testing-organization-gcr/testing/test_api:main
+            docker run \
+            -p 5000:5000 \
+            --name api:latest \
+            ghcr.io/testing-organization-gcr/testing/test_api:main
