@@ -141,4 +141,4 @@ def cronJob():
 
 @application.route('/hello', methods=['GET'])
 def helloword():
-    return "Hello global World, hello", 200
+    return "Hello global World, bye world", 200
