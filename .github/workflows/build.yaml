@@ -62,5 +62,5 @@ jobs:
             docker pull ghcr.io/testing-organization-gcr/testing/test_api:main
             docker run \
             -p 5000:5000 \
-            --name api:latest \
+            --name api \
             ghcr.io/testing-organization-gcr/testing/test_api:main
