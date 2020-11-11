@@ -58,11 +58,10 @@ jobs:
           USERNAME: ${{ secrets.VULTR_USERNAME }}
           KEY: ${{ secrets.VULTR_SSH_KEY }}
           PORT: ${{ secrets.VULTR_PORT }}
-          script: docker rm -f api 
-            |
+          script: |
             docker pull ghcr.io/testing-organization-gcr/testing/test_api:main
             docker run \
             -d \
             -p 5000:5000 \
-            --name api \
+            --name apinew \
             ghcr.io/testing-organization-gcr/testing/test_api:main
